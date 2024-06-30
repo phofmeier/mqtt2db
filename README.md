@@ -1,4 +1,5 @@
 ![Pre Commit](https://github.com/phofmeier/mqtt2db/actions/workflows/pre-commit.yml/badge.svg)
+![Unit Tests](https://github.com/phofmeier/mqtt2db/actions/workflows/unittests.yml/badge.svg)
 
 # MQTT2DB
 
