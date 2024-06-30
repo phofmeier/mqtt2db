@@ -41,7 +41,7 @@
   // "forwardPorts": [3000, 27017],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "git config --global --add safe.directory /workspaces/mqtt2db && pip install --uprade pip && pip install -e .[dev] &&  pre-commit install --install-hooks"
+  "postCreateCommand": "pip install --upgrade pip && pip install -e .[dev] &&  pre-commit install --install-hooks"
 
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
