@@ -5,7 +5,6 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
@@ -14,39 +13,23 @@
       "extensions": [
         "mongodb.mongodb-vscode",
         "tamasfe.even-better-toml",
-        "streetsidesoftware.code-spell-checker"
+        "streetsidesoftware.code-spell-checker",
+        "njpwerner.autodocstring",
+        "ms-python.python",
+        "ms-python.black-formatter"
       ]
     }
   },
-
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
-    // "ghcr.io/devcontainers/features/python:1": {
-    // 	"installTools": true,
-    // 	"version": "latest"
-    // },
-    "common": {
-      "username": "automatic",
-      "uid": "automatic",
-      "gid": "automatic",
-      "installZsh": true,
-      "installOhMyZsh": true,
-      "upgradePackages": true,
-      "nonFreePackages": false
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true
     }
-    // "docker-from-docker": "20.10",
-    // "terraform": {
-    //     "version": "1.0.6"
-    // },
-    //"git": "latest"
   },
-
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [3000, 27017],
-
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "pip install --upgrade pip && pip install -e .[dev] &&  pre-commit install --install-hooks"
-
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
 }
