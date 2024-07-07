@@ -1,3 +1,5 @@
+import json
+
 import paho.mqtt.client as mqtt
 
 broker = "localhost"
@@ -27,8 +29,14 @@ mqttc.connect(broker, port, 60)
 # handles reconnecting.
 # Other loop*() functions are available that give a threaded interface and a
 # manual interface.
+test_item = {
+    "item_name": "test_1",
+    "item_val": 10.1,
+}
 
-mqttc.publish("test/test_node_1", "testMessage")
+test_item_json = json.dumps(test_item)
+
+mqttc.publish("data/test_node_1", test_item_json)
 mqttc.publish("test_2/test_node_1", "testMessage")
 
 mqttc.loop_forever()
