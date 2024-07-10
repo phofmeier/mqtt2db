@@ -29,7 +29,7 @@ where = ["src", "submodule"]
 
 [project.scripts]
 mqtt2db = "mqtt2db.mqtt2db:main"
-mqtt2db_dash = "dash.dash_app:main"
+mqtt2db_dash = "dashboard.dash_app:main"
 
 [tool.setuptools_scm]
 
