@@ -3,7 +3,7 @@ import logging
 
 import paho.mqtt.client as mqtt
 
-from mqtt2db.database import Database
+from mqtt2db.database.database import Database
 
 
 class MQTTConnection:

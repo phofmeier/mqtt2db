@@ -2,7 +2,7 @@ import logging
 import logging.config
 
 from mqtt2db.config import Config
-from mqtt2db.database import Database
+from mqtt2db.database.database import Database
 from mqtt2db.mqtt import MQTTConnection
 
 
