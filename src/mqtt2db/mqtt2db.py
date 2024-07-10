@@ -1,6 +1,7 @@
 import logging
 import logging.config
 
+from mqtt2db.config import Config
 from mqtt2db.database import Database
 from mqtt2db.mqtt import MQTTConnection
 
@@ -30,9 +31,10 @@ def init_logger():
 
 
 def main():
+    config = Config("config.yml")
     logger = init_logger()
-    database = Database()
-    mqtt = MQTTConnection(database)
+    database = Database(config.get("database"))
+    mqtt = MQTTConnection(database, config.get("mqtt"))
     logger.info("Run application.")
     mqtt.run()
 
