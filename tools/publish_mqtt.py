@@ -36,7 +36,7 @@ test_item = {
 
 test_item_json = json.dumps(test_item)
 
-mqttc.publish("data/test_node_1", test_item_json)
+mqttc.publish("data/test_db/static/node", test_item_json)
 mqttc.publish("test_2/test_node_1", "testMessage")
 
 mqttc.loop_forever()

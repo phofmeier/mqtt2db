@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 
-dependencies = ["paho-mqtt >= 2.1.0", "pymongo[srv] >= 4.8.0"]
+dependencies = ["paho-mqtt >= 2.1.0", "pymongo[srv] >= 4.8.0", "dash >= 2.17.1"]
 dynamic = ["version"]
 
 [project.optional-dependencies]
@@ -29,6 +29,7 @@ where = ["src", "submodule"]
 
 [project.scripts]
 mqtt2db = "mqtt2db.mqtt2db:main"
+mqtt2db_dash = "dash.dash_app:main"
 
 [tool.setuptools_scm]
 
