@@ -15,3 +15,12 @@ class Database:
 
     def isTypeValid(self, name: str) -> bool:
         return name in self.data_types
+
+    def getDatabasesNames(self) -> list[str]:
+        return self.database_impl.getDatabasesNames()
+
+    def getCollectionNames(self, database_name: str) -> list[str]:
+        return self.database_impl.getCollectionNames(database_name)
+
+    def getAllDataFrom(self, database: str, collection: str):
+        return self.database_impl.getAllDataFrom(database, collection)

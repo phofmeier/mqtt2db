@@ -13,5 +13,11 @@ class MongoDBImplementation:
     def add(self, database: str, type: str, collection: str, data):
         self.client[database][collection].insert_one(data)
 
-    def isTypeValid(self, name: str) -> bool:
-        return name in self.data_types
+    def getDatabasesNames(self) -> list[str]:
+        return self.client.list_database_names()
+
+    def getCollectionNames(self, database_name: str) -> list[str]:
+        return self.client[database_name].list_collection_names()
+
+    def getAllDataFrom(self, database: str, collection: str):
+        return list(self.client[database][collection].find({}, {"_id": False}))
