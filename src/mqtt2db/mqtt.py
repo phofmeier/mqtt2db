@@ -7,7 +7,15 @@ from mqtt2db.database.database import Database
 
 
 class MQTTConnection:
+    """Class to manage the connection to the MQTT broker."""
+
     def __init__(self, database: Database, config: dict) -> None:
+        """Initialize the Connection to the MQTT broker.
+
+        Args:
+            database (Database): Database interface where the incoming data is stored.
+            config (dict): MQTT configuration.
+        """
         self.logger = logging.getLogger(__name__)
         self.config = config
         self.prefix = self.config["channel_prefix"].strip("/")
@@ -50,4 +58,5 @@ class MQTTConnection:
         self.mqttc.connect(self.config["broker"], self.config["port"])
 
     def run(self):
+        """Run the mqtt client in an endless loop."""
         self.mqttc.loop_forever()
