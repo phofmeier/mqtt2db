@@ -23,7 +23,9 @@ class MQTTConnection:
         def on_message(client, userdata, msg):
             channel = msg.topic[len(self.prefix) + 1 :].split("/")
             if len(channel) < 3:
-                self.logger.warning(f"Message arrived on bad channel: {channel}.")
+                self.logger.warning(
+                    f"Message arrived on wrong formatted channel: {channel}."
+                )
                 return
             database_name = channel[0]
             type_name = channel[1]
@@ -36,7 +38,7 @@ class MQTTConnection:
             data = json.loads(msg.payload)
 
             self.logger.debug(
-                f"Received data for database: {database_name} as type: {type_name}"
+                f"Received data for database: {database_name} as type: {type_name} "
                 f"for collection: {collection} with data: {data}"
             )
             self.database.add(database_name, type_name, collection, data)

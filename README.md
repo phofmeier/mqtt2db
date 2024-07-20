@@ -24,5 +24,12 @@ This application subscribes to channels on mqtt broker and adds the data to Mong
 
 ### Data Types
 
-- static: Static data which does not change. New data overwrites the old one depending on TBD
-- timed: All data has a timestamped and is sorted in a time based manner
+#### Static
+
+Static data which does not change. New data overwrites the old one depending on TBD
+Required id filed
+
+#### Timed
+
+All data has a timestamped and is sorted in a time based manner.
+Each data needs an entry with the key `<timefield>` including the timestamp.

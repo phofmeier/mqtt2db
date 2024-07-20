@@ -1,3 +1,4 @@
+import datetime
 import json
 
 import paho.mqtt.client as mqtt
@@ -30,13 +31,26 @@ mqttc.connect(broker, port, 60)
 # Other loop*() functions are available that give a threaded interface and a
 # manual interface.
 test_item = {
-    "item_name": "test_1",
+    "id": "TestUniqueid2",
+    "item_name": "test_3",
     "item_val": 10.1,
+    "another_thing": "as String",
 }
 
 test_item_json = json.dumps(test_item)
 
+
 mqttc.publish("data/test_db/static/node", test_item_json)
 mqttc.publish("test_2/test_node_1", "testMessage")
+
+timed_item = {
+    "timestamp": datetime.datetime.now().isoformat(),
+    "temperature": 10.9,
+    "humidity": 35.4,
+}
+
+timed_item_json = json.dumps(timed_item)
+
+mqttc.publish("data/test_db/timed/temperature", timed_item_json)
 
 mqttc.loop_forever()

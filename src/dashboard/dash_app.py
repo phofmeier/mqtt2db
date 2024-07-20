@@ -1,3 +1,5 @@
+import pandas as pd
+import plotly.express as px
 from dash import Dash, Input, Output, callback, dash_table, dcc, html
 
 from mqtt2db.config import Config
@@ -18,20 +20,48 @@ def main():
         dcc.Dropdown(db_names, db_names[0], id="db-names-selector-dropdown"),
     )
 
-    app.layout.append(html.Div(children="", id="db-table"))
+    app.layout.append(html.Div(children="", id="db-static-table"))
+    app.layout.append(html.Div(children="", id="db-timed-data"))
 
     @callback(
-        Output("db-table", "children"),
+        Output("db-static-table", "children"),
         Input("db-names-selector-dropdown", "value"),
     )
     def update_database_table(db_name):
-        collection_names = database.getCollectionNames(db_name)
-        values = []
+        collection_names = database.getCollectionNames(db_name, "static")
         table_layout = []
         for collection in collection_names:
-            values = database.getAllDataFrom(db_name, collection)
+            values = pd.DataFrame(database.getAllDataFrom(db_name, collection))
             table_layout.append(html.H2(children=collection))
-            table_layout.append(dash_table.DataTable(values))
+            table_layout.append(dash_table.DataTable(values.to_dict("records")))
+        return table_layout
+
+    @callback(
+        Output("db-timed-data", "children"),
+        Input("db-names-selector-dropdown", "value"),
+    )
+    def update_timed_data(db_name):
+        timestamp_name = config.get("database")["timed"]["time_field_name"]
+        collection_names = database.getCollectionNames(db_name, "timed")
+        table_layout = []
+        for collection in collection_names:
+            df = pd.DataFrame(database.getAllTimedDataFrom(db_name, collection))
+            data_names = list(df.columns)
+            data_names = [
+                name
+                for name in data_names
+                if name not in [timestamp_name, "index", "_id"]
+            ]
+            table_layout.append(html.H2(children=collection))
+            table_layout.append(
+                dcc.Graph(
+                    figure=px.line(
+                        df,
+                        x=timestamp_name,
+                        y=data_names,
+                    )
+                )
+            )
         return table_layout
 
     app.run(debug=True)
