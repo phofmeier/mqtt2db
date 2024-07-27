@@ -1,5 +1,5 @@
 database:
-  connection_string: localhost:27017
+  connection_string: db:27017
   static:
     id_field_name: id
   timed:
@@ -9,7 +9,7 @@ logging:
   disable_existing_loggers: false
   formatters:
     f:
-      format: "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"
+      format: '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
   handlers:
     h:
       class: logging.StreamHandler
@@ -17,10 +17,10 @@ logging:
       level: 10
   root:
     handlers:
-      - h
+    - h
     level: 10
   version: 1
 mqtt:
-  broker: localhost
+  broker: mosquitto
   channel_prefix: data
   port: 1883
