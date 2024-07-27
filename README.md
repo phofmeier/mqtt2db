@@ -1,5 +1,5 @@
-![Pre Commit](https://github.com/phofmeier/mqtt2db/actions/workflows/pre-commit.yml/badge.svg)
-![Unit Tests](https://github.com/phofmeier/mqtt2db/actions/workflows/unittests.yml/badge.svg)
+[![pre-commit](https://github.com/phofmeier/mqtt2db/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/phofmeier/mqtt2db/actions/workflows/pre-commit.yml)
+[![Unit Tests](https://github.com/phofmeier/mqtt2db/actions/workflows/unittests.yml/badge.svg)](https://github.com/phofmeier/mqtt2db/actions/workflows/unittests.yml)
 [![Dependabot Updates](https://github.com/phofmeier/mqtt2db/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/phofmeier/mqtt2db/actions/workflows/dependabot/dependabot-updates)
 
 # MQTT2DB
