@@ -10,7 +10,7 @@ published_messages = []
 
 mqtt_client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 mqtt_client.connect(broker, port, 60)
-
+mqtt_client.loop_start()
 
 test_item_static = {
     "id": "TestUniqueid3",
@@ -35,7 +35,7 @@ published_messages.append(
     mqtt_client.publish("data/test_db/timed/temperature", json.dumps(timed_item))
 )
 
-mqtt_client.loop_start()
+# Wait for publish everything before leaving
 while mqtt_client.want_write() or any(
     [not msg.is_published() for msg in published_messages]
 ):

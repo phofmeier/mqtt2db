@@ -13,11 +13,21 @@ def main():
     app = Dash()
     app.layout = [
         html.H1(children="Mongo DB Dash", style={"textAlign": "center"}),
+        dcc.Interval(
+            id="update-component",
+            interval=1.0 * 60 * 1000,  # in milliseconds
+            n_intervals=0,
+        ),
     ]
 
     db_names = database.getDatabasesNames()
     app.layout.append(
-        dcc.Dropdown(db_names, db_names[0], id="db-names-selector-dropdown"),
+        html.Div(
+            [
+                "Database: ",
+                dcc.Dropdown(db_names, db_names[0], id="db-names-selector-dropdown"),
+            ]
+        ),
     )
 
     app.layout.append(html.Div(children="", id="db-static-table"))
@@ -26,8 +36,9 @@ def main():
     @callback(
         Output("db-static-table", "children"),
         Input("db-names-selector-dropdown", "value"),
+        Input("update-component", "n_intervals"),
     )
-    def update_database_table(db_name):
+    def update_database_table(db_name, update_intervals):
         collection_names = database.getCollectionNames(db_name, "static")
         table_layout = []
         for collection in collection_names:
@@ -39,8 +50,9 @@ def main():
     @callback(
         Output("db-timed-data", "children"),
         Input("db-names-selector-dropdown", "value"),
+        Input("update-component", "n_intervals"),
     )
-    def update_timed_data(db_name):
+    def update_timed_data(db_name, update_intervals):
         timestamp_name = config.get("database")["timed"]["time_field_name"]
         collection_names = database.getCollectionNames(db_name, "timed")
         table_layout = []
