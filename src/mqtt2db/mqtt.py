@@ -54,7 +54,7 @@ class MQTTConnection:
         self.mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
         self.mqttc.on_connect = on_connect
         self.mqttc.on_message = on_message
-	
+
         self.logger.debug(f"Connect to mqtt client with config: {self.config}")
         self.mqttc.connect(self.config["broker"], self.config["port"])
 
