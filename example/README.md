@@ -18,7 +18,7 @@ docker compose build
 docker compose up
 ```
 
-### Install locally
+### Install application locally
 
 ```
 python3.11 -m venv ./venv
@@ -32,7 +32,7 @@ pip install .
 python3.11 tools/publish_mqtt.py
 ```
 
-### Show data in app
+### Show data in a dash app
 
 ```
 mqtt2db_dash
