@@ -17,6 +17,7 @@ jobs:
           python-version: "3.11"
       - uses: browniebroke/pre-commit-autoupdate-action@main
       - uses: peter-evans/create-pull-request@v6
+        if: always()
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: update/pre-commit-hooks
