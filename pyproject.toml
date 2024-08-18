@@ -54,6 +54,11 @@ minversion = "6.0"
 addopts = "-ra -q"
 testpaths = ["tests"]
 
+[tool.coverage.run]
+source = [
+    "./src/*",
+    ]
+
 [tool.flake8]
 doctests = true
 exit_zero = false
