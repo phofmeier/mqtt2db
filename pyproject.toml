@@ -27,6 +27,7 @@ dev = [
     "black>=24.4.2",
     "codespell>=2.3.0",
     "pre-commit>=3.7.1",
+    "coverage",
 ]
 # , "mkdocs>=1.2.3", "mkdocstrings[python-legacy]>=0.18.0", "mkdocs-material>=8.1.9", "mkdocs-bibtex>=2.0.1", "matplotlib>=3.6.2"
 
@@ -52,6 +53,11 @@ files = "src,examples,tests,tools"
 minversion = "6.0"
 addopts = "-ra -q"
 testpaths = ["tests"]
+
+[tool.coverage.run]
+source = [
+    "src",
+    ]
 
 [tool.flake8]
 doctests = true
