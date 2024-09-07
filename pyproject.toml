@@ -56,7 +56,7 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 source = [
-    "./src/*",
+    "src",
     ]
 
 [tool.flake8]
