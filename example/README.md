@@ -3,8 +3,9 @@
 This example contains a docker compose configuration launching 3 container.
 
 - 1. The MQTT2DB application
-- 2. The Mosquitto MQTT broker
-- 3. A MongoDB Database
+- 2. The Example Dashboard
+- 3. The Mosquitto MQTT broker
+- 4. A MongoDB Database
 
 There is no authentication used anywhere. So please do not use this example for production.
 
@@ -34,6 +35,4 @@ python3.11 tools/publish_mqtt.py
 
 ### Show data in a dash app
 
-```
-mqtt2db_dash
-```
+Open [http://localhost:8050/](http://localhost:8050/)
