@@ -13,11 +13,15 @@ Use the following labels:
 
 ## [UNRELEASED]
 
+### Fixed
+
+- [Patch] Decode binary strings correctly.
+
 ## [0.0.2] - 2024-12-21
 
 ### Added
 
-- [Path] Dashboard is part of the example.
+- [Patch] Dashboard is part of the example.
 
 ## [0.0.1] - 2024-06-30
 
