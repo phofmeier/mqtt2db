@@ -13,6 +13,8 @@ Use the following labels:
 
 ## [UNRELEASED]
 
+## [0.0.2] - 2024-12-21
+
 ### Added
 
 - [Path] Dashboard is part of the example.
