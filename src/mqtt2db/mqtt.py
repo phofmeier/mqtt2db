@@ -43,7 +43,14 @@ class MQTTConnection:
 
             collection = "_".join(channel[2:])
 
-            data = json.loads(msg.payload)
+            self.logger.debug(f"Raw message: {msg.payload}")
+            message = msg.payload
+            if isinstance(message, bytes):
+                message = msg.payload.decode().rstrip("\x00")
+
+            self.logger.debug(f"Decoded message: {message}")
+
+            data = json.loads(message)
 
             self.logger.debug(
                 f"Received data for database: {database_name} as type: {type_name} "
