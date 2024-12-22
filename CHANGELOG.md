@@ -13,6 +13,10 @@ Use the following labels:
 
 ## [UNRELEASED]
 
+### Added
+
+- [Minor] Add received timestamp to static data if configured.
+
 ### Fixed
 
 - [Patch] Decode binary strings correctly.
