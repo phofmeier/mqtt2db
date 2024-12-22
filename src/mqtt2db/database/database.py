@@ -38,6 +38,7 @@ class Database:
             )
             return
         if type == "static":
+            data = self.maybeAddTimestamp(data)
             self.database_impl.addStaticData(database, collection, data)
             return
         if type == "timed":
@@ -102,6 +103,21 @@ class Database:
         data[time_field_name] = datetime_ts
 
         return True
+
+    def maybeAddTimestamp(self, data: dict) -> dict:
+        """Add the current received timestamp to the data id configured.
+
+        Args:
+            data (dict): data before adding the timestamp.
+
+        Returns:
+            dict: data with the timestamp if configured.
+        """
+        if not self.config["static"]["add_received_timestamp"]:
+            return data
+        ts_name = self.config["static"]["received_timestamp_name"]
+        data.update({ts_name: datetime.datetime.now()})
+        return data
 
     def getDatabasesNames(self) -> list[str]:
         return self.database_impl.getDatabasesNames()
