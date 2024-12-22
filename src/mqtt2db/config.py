@@ -17,6 +17,8 @@ class Config:
                 "connection_string": "localhost:27017",
                 "static": {
                     "id_field_name": "id",
+                    "add_received_timestamp": True,
+                    "received_timestamp_name": "ts_received",
                 },
                 "timed": {
                     "time_field_name": "timestamp",
