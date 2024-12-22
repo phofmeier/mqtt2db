@@ -104,7 +104,15 @@ class Database:
 
         return True
 
-    def maybeAddTimestamp(self, data: dict):
+    def maybeAddTimestamp(self, data: dict) -> dict:
+        """Add the current received timestamp to the data id configured.
+
+        Args:
+            data (dict): data before adding the timestamp.
+
+        Returns:
+            dict: data with the timestamp if configured.
+        """
         if not self.config["static"]["add_received_timestamp"]:
             return data
         ts_name = self.config["static"]["received_timestamp_name"]
