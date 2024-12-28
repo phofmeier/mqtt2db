@@ -13,6 +13,8 @@ Use the following labels:
 
 ## [UNRELEASED]
 
+## [0.1.0] - 2024-12-28
+
 ### Added
 
 - [Minor] Add received timestamp to static data if configured.
