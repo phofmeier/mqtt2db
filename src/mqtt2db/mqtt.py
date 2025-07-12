@@ -25,7 +25,7 @@ class MQTTConnection:
             self.logger.info(f"Connected with result code {reason_code}")
             # Subscribing in on_connect() means that if we lose the connection and
             # reconnect then subscriptions will be renewed.
-            client.subscribe(self.prefix + "/#")
+            client.subscribe(self.prefix + "/#", qos=self.config["qos"])
 
         # The callback for when a PUBLISH message is received from the server.
         def on_message(client, userdata, msg):
@@ -58,7 +58,12 @@ class MQTTConnection:
             )
             self.database.add(database_name, type_name, collection, data)
 
-        self.mqttc = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+        self.mqttc = mqtt.Client(
+            mqtt.CallbackAPIVersion.VERSION2,
+            client_id=self.config["client_id"],
+            protocol=mqtt.MQTTv5,
+            transport=self.config["transport"],
+        )
         self.mqttc.on_connect = on_connect
         self.mqttc.on_message = on_message
 
