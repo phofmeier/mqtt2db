@@ -12,6 +12,9 @@ class Config:
                 "broker": "localhost",
                 "port": 1883,
                 "channel_prefix": "data",
+                "client_id": "mqtt2db",
+                "transport": "tcp",
+                "qos": 1,
             },
             "database": {
                 "connection_string": "localhost:27017",
