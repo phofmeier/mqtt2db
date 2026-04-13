@@ -14,7 +14,7 @@ dependencies = [
     "paho-mqtt >= 2.1.0",
     "pymongo[srv] >= 4.8.0",
     "dash >= 2.17.1",
-    "pandas >= 2.2.2",
+    "pandas >= 3.0.2",
     "pyyaml >= 6.0.1",
 ]
 dynamic = ["version"]
